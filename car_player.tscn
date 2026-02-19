@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bstovc2m2f1ri"]
+[gd_scene load_steps=4 format=3 uid="uid://cwxkjvlu4fehl"]
 
-[ext_resource type="Script" uid="uid://depqh70v53i8c" path="res://player.gd" id="1_kpjcp"]
-[ext_resource type="Texture2D" uid="uid://bmngepl8lf8k3" path="res://icon.svg" id="1_xhfnw"]
+[ext_resource type="Script" uid="uid://c0mxku62mxfg7" path="res://player_car.gd" id="1_d1cii"]
+[ext_resource type="Texture2D" uid="uid://bmngepl8lf8k3" path="res://icon.svg" id="2_xysde"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rwas"]
 size = Vector2(90, 132)
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_kpjcp")
+[node name="Player" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_d1cii")
 
 [node name="Diolouge_text" type="Label" parent="."]
 z_index = 1
@@ -18,9 +19,10 @@ offset_bottom = 315.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.707, 1)
-texture = ExtResource("1_xhfnw")
+texture = ExtResource("2_xysde")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0rwas")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)

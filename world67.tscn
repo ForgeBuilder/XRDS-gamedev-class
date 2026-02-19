@@ -1,8 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhjs60cecthua"]
+[gd_scene load_steps=4 format=3 uid="uid://dhjs60cecthua"]
 
-[ext_resource type="PackedScene" uid="uid://bstovc2m2f1ri" path="res://Player.tscn" id="1_urip1"]
+[ext_resource type="Texture2D" uid="uid://bmngepl8lf8k3" path="res://icon.svg" id="2_vgd8o"]
+[ext_resource type="PackedScene" uid="uid://cwxkjvlu4fehl" path="res://car_player.tscn" id="3_in53g"]
+[ext_resource type="PackedScene" uid="uid://diyyhrkyj1nqv" path="res://npc.tscn" id="3_wxttl"]
 
 [node name="World" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_urip1")]
-position = Vector2(293, 201)
+[node name="Icon" type="Sprite2D" parent="."]
+z_index = 20
+position = Vector2(114, 423)
+texture = ExtResource("2_vgd8o")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(814, 86)
+texture = ExtResource("2_vgd8o")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(725, 549)
+texture = ExtResource("2_vgd8o")
+
+[node name="NPC" parent="." instance=ExtResource("3_wxttl")]
+position = Vector2(661, 358)
+
+[node name="Player" parent="." instance=ExtResource("3_in53g")]
+position = Vector2(385, 234)
