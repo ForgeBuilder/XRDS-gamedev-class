@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cesfwg8pkxbdx"]
+[gd_scene load_steps=4 format=3 uid="uid://cesfwg8pkxbdx"]
 
 [ext_resource type="Texture2D" uid="uid://bmngepl8lf8k3" path="res://icon.svg" id="1_pr6qp"]
-[ext_resource type="PackedScene" uid="uid://b6ow3j8ao3n5d" path="res://bullet.tscn" id="1_yvwsi"]
 
 [sub_resource type="GDScript" id="GDScript_pr6qp"]
 resource_name = "sidecharacter.gd"
@@ -13,8 +12,6 @@ const JUMP_VELOCITY = -400.0
 
 @onready var gun_pivpoint : Node2D = $\"Gun pivpoint\"
 @export var bulletpacked : PackedScene
-
-var ready_to_fire : bool = true
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -37,19 +34,10 @@ func _physics_process(delta: float) -> void:
 	
 	gun_pivpoint.rotation = gun_pivpoint.global_position.angle_to_point(get_global_mouse_position())
 	
-	
-	
-	if Input.is_action_pressed(\"lmb\") && ready_to_fire:
+	if Input.is_action_pressed(\"lmb\") && $\"Gun pivpoint/Gun_cooldown\".is_stopped():
 		$\"Gun pivpoint/Gun_cooldown\".start()
-		ready_to_fire = false
-		
 		var new_bullet : Node2D = bulletpacked.instantiate()
-		new_bullet.transform = $\"Gun pivpoint/Bullet spawn\".global_transform
-		get_tree().get_root().add_child(new_bullet)
-
-
-func _on_gun_cooldown_timeout() -> void:
-	ready_to_fire = true
+		new_bullet.transform = $\"Gun pivpoint/Bullet spawn\".transform
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxb78"]
@@ -57,7 +45,6 @@ size = Vector2(58, 108)
 
 [node name="sidecharacter" type="CharacterBody2D"]
 script = SubResource("GDScript_pr6qp")
-bulletpacked = ExtResource("1_yvwsi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pxb78")
@@ -69,16 +56,14 @@ texture = ExtResource("1_pr6qp")
 
 [node name="Gun pivpoint" type="Node2D" parent="."]
 position = Vector2(-0.722656, 0)
+scale = Vector2(0.198303, 0.711914)
 
 [node name="gun" type="Sprite2D" parent="Gun pivpoint"]
-position = Vector2(0.722656, 0)
-scale = Vector2(0.854672, 0.0970186)
+position = Vector2(99.457, 2.80933)
+scale = Vector2(4.78332, 0.159808)
 texture = ExtResource("1_pr6qp")
 
 [node name="Bullet spawn" type="Node2D" parent="Gun pivpoint"]
-position = Vector2(55.7227, 0)
+position = Vector2(205.355, 2.80933)
 
 [node name="Gun_cooldown" type="Timer" parent="Gun pivpoint"]
-wait_time = 0.2
-
-[connection signal="timeout" from="Gun pivpoint/Gun_cooldown" to="." method="_on_gun_cooldown_timeout"]

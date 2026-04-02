@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8vj35frhspqx"]
+[gd_scene load_steps=7 format=3 uid="uid://c8vj35frhspqx"]
 
 [ext_resource type="Script" uid="uid://cy2p4byl66gv5" path="res://main_menu.gd" id="1_06t4h"]
 [ext_resource type="PackedScene" uid="uid://dhjs60cecthua" path="res://world67.tscn" id="2_7vrkn"]
 [ext_resource type="PackedScene" uid="uid://drwehwxboxh5b" path="res://sideworld.tscn" id="3_fu7sn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jix8l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -28,6 +34,9 @@ offset_left = 112.0
 offset_top = 375.0
 offset_right = 793.0
 offset_bottom = 539.0
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fu7sn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jix8l")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_glbon")
 text = "level 2"
 
 [connection signal="pressed" from="CanvasLayer/level1" to="." method="_on_level_1_pressed"]

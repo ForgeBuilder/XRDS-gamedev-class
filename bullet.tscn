@@ -1,9 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6ow3j8ao3n5d"]
+[gd_scene load_steps=3 format=3 uid="uid://b6ow3j8ao3n5d"]
+
+[sub_resource type="GDScript" id="GDScript_rtl8c"]
+script/source = "extends Area2D
+
+const speed = 10
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _physics_process(delta: float) -> void:
+	self.position += position.from_angle(rotation)*speed
+"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rtl8c"]
 height = 50.0
 
 [node name="bullet" type="Area2D"]
+script = SubResource("GDScript_rtl8c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
