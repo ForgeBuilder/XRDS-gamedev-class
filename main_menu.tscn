@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8vj35frhspqx"]
+
+[ext_resource type="Script" uid="uid://cy2p4byl66gv5" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="PackedScene" uid="uid://dhjs60cecthua" path="res://world67.tscn" id="2_7vrkn"]
+[ext_resource type="PackedScene" uid="uid://drwehwxboxh5b" path="res://sideworld.tscn" id="3_fu7sn"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_06t4h")
+levelscene = ExtResource("2_7vrkn")
+level2scene = ExtResource("3_fu7sn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="level1" type="Button" parent="CanvasLayer"]
+offset_left = 109.0
+offset_top = 172.0
+offset_right = 790.0
+offset_bottom = 336.0
+text = "level 1"
+
+[node name="level2" type="Button" parent="CanvasLayer"]
+offset_left = 112.0
+offset_top = 375.0
+offset_right = 793.0
+offset_bottom = 539.0
+text = "level 2"
+
+[connection signal="pressed" from="CanvasLayer/level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/level2" to="." method="_on_level_2_pressed"]
