@@ -4,23 +4,40 @@
 [ext_resource type="PackedScene" uid="uid://cwxkjvlu4fehl" path="res://car_player.tscn" id="3_in53g"]
 [ext_resource type="PackedScene" uid="uid://diyyhrkyj1nqv" path="res://npc.tscn" id="3_wxttl"]
 
-[node name="World" type="Node2D"]
+[node name="Node" type="Node"]
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="World" type="Node2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="World"]
 z_index = 20
 position = Vector2(114, 423)
 texture = ExtResource("2_vgd8o")
 
-[node name="Icon2" type="Sprite2D" parent="."]
+[node name="Icon2" type="Sprite2D" parent="World"]
 position = Vector2(814, 86)
 texture = ExtResource("2_vgd8o")
 
-[node name="Icon3" type="Sprite2D" parent="."]
+[node name="Icon3" type="Sprite2D" parent="World"]
 position = Vector2(725, 549)
 texture = ExtResource("2_vgd8o")
 
-[node name="NPC" parent="." instance=ExtResource("3_wxttl")]
+[node name="NPC" parent="World" instance=ExtResource("3_wxttl")]
 position = Vector2(661, 358)
 
-[node name="Player" parent="." instance=ExtResource("3_in53g")]
+[node name="Player" parent="World" instance=ExtResource("3_in53g")]
 position = Vector2(385, 234)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Diolouge_text" type="Label" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 586.0
+offset_top = 822.0
+offset_right = -467.0
+offset_bottom = -157.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true

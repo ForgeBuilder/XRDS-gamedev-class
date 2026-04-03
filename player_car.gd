@@ -5,7 +5,7 @@ const TURN_SPEED = 8000
 const drift_factor = 0.8
 const brake_factor = 0.95
 
-@onready var diolouge_text_box = $Diolouge_text
+@export var diolouge_text_box : Label
 
 var turn_input : float
 

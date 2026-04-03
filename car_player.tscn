@@ -6,16 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rwas"]
 size = Vector2(90, 132)
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("diolouge_text_box")]
 gravity_scale = 0.0
 script = ExtResource("1_d1cii")
-
-[node name="Diolouge_text" type="Label" parent="."]
-z_index = 1
-offset_left = -288.0
-offset_top = 175.0
-offset_right = 290.0
-offset_bottom = 315.0
+diolouge_text_box = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.707, 1)
@@ -25,4 +19,3 @@ texture = ExtResource("2_xysde")
 shape = SubResource("RectangleShape2D_0rwas")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
