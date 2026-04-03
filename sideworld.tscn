@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://drwehwxboxh5b"]
+[gd_scene load_steps=5 format=3 uid="uid://drwehwxboxh5b"]
 
 [ext_resource type="PackedScene" uid="uid://cesfwg8pkxbdx" path="res://sidecharacter.tscn" id="1_n243b"]
-[ext_resource type="Texture2D" uid="uid://bmngepl8lf8k3" path="res://icon.svg" id="2_tsrsr"]
+[ext_resource type="Script" uid="uid://hi8p85fswywp" path="res://sideworld.gd" id="1_tsrsr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n243b"]
 size = Vector2(1345.5, 163)
@@ -9,27 +9,14 @@ size = Vector2(1345.5, 163)
 [sub_resource type="ViewportTexture" id="ViewportTexture_tsrsr"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_gqm1m"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="GDScript" id="GDScript_tsrsr"]
-resource_name = "veiwport evil"
-script/source = "extends Sprite2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	var selftexture : ViewportTexture = texture
-	selftexture.viewport_path = get_viewport().get_path()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
-
 [node name="Sideworld" type="Node2D"]
+script = ExtResource("1_tsrsr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(572, 331)
 
 [node name="sidecharacter" parent="." instance=ExtResource("1_n243b")]
+position = Vector2(437, 452)
 
 [node name="platform" type="StaticBody2D" parent="."]
 
@@ -37,27 +24,20 @@ func _process(delta: float) -> void:
 position = Vector2(572, 605)
 shape = SubResource("RectangleShape2D_n243b")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-offset = Vector2(300.055, 300)
-transform = Transform2D(1, 0, 0, 1, 300.055, 300)
-
 [node name="SubViewport" type="SubViewport" parent="."]
 
-[node name="Camera2D2" type="Camera2D" parent="SubViewport"]
-position = Vector2(-1, 2)
+[node name="security camera" type="Camera2D" parent="SubViewport"]
+position = Vector2(69, 398)
+zoom = Vector2(3, 3)
+
+[node name="security camera transform" type="Node2D" parent="."]
+position = Vector2(203, 458)
+
+[node name="security camera" type="Camera2D" parent="security camera transform"]
 enabled = false
-
-[node name="veiwport sprite" type="Sprite2D" parent="SubViewport"]
-position = Vector2(97, 6)
-rotation = -0.494333
-texture = SubResource("ViewportTexture_tsrsr")
-
-[node name="Godot man" type="Sprite2D" parent="SubViewport"]
-position = Vector2(-435, -179)
-texture = ExtResource("2_tsrsr")
+zoom = Vector2(3, 3)
 
 [node name="veiwport sprite" type="Sprite2D" parent="."]
-position = Vector2(895, 256)
-rotation = 0.00575247
-texture = SubResource("ViewportTexture_gqm1m")
-script = SubResource("GDScript_tsrsr")
+z_index = -1
+position = Vector2(872, 285)
+texture = SubResource("ViewportTexture_tsrsr")
